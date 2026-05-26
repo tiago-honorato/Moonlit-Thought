@@ -4,16 +4,16 @@ public class PlayerMovement : MonoBehaviour
 {
 
     [SerializeField] Transform playerCamera;
-    [SerializeField] [Range(0.0f, 0.5f)] float mouseSmoothTime = 0.03f;
+    [SerializeField][Range(0.0f, 0.5f)] float mouseSmoothTime = 0.02f;
     [SerializeField] bool cursorLock = true;
-    [SerializeField] float mouseSensitivity = 3.5f;
-    [SerializeField] float Speed = 6.0f;
-    [SerializeField] [Range(0.0f, 0.5f)] float moveSmoothTime = 0.3f;
-    [SerializeField] float gravity = -30f;
+    [SerializeField] float mouseSensitivity = 1.5f;
+    [SerializeField] float Speed = 4.0f;
+    [SerializeField][Range(0.0f, 0.5f)] float moveSmoothTime = 0.02f;
+    [SerializeField] float gravity = -10f;
     [SerializeField] Transform groundCheck;
     [SerializeField] LayerMask ground;
 
-    public float jumpHeight = 6f;
+    public float jumpHeight = 3.0f;
     float velocityY;
     bool isGrounded;
 
@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
         controller = GetComponent<CharacterController>();
 
         if (cursorLock)
