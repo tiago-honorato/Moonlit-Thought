@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 public class PlayerInteraction : MonoBehaviour
 {
@@ -6,6 +7,20 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private float interactDistance = 3.0f; // Distância mínima (em metros)
     [SerializeField] private LayerMask interactableLayer;   // Camada dos objetos interativos
     [SerializeField] private KeyCode interactKey = KeyCode.E;
+
+    [SerializeField] private GameObject interactionPrompt;
+
+    void Start()
+    {
+
+        if(interactionPrompt != null)
+        {
+
+            interactionPrompt.gameObject.SetActive(false);
+
+        }
+
+    }
 
     void Update()
     {
@@ -16,9 +31,14 @@ public class PlayerInteraction : MonoBehaviour
         // Desenha o raio no modo de edição/Scene para você conseguir enxergar o laser (ajuda no teste!)
         Debug.DrawRay(transform.position, transform.forward * interactDistance, Color.yellow);
 
+        bool IsLooking = false;
+
         // Dispara o "laser" de física
         if (Physics.Raycast(ray, out hit, interactDistance, interactableLayer))
         {
+
+            IsLooking = true;
+
             // Se o laser bateu em algo, tentamos pegar o script 'Interactable' dele
             Interactable interactable = hit.collider.GetComponent<Interactable>();
 
@@ -33,6 +53,11 @@ public class PlayerInteraction : MonoBehaviour
                     interactable.Interact();
                 }
             }
+        }
+
+        if (interactionPrompt != null)
+        {
+            interactionPrompt.gameObject.SetActive(IsLooking);
         }
     }
 }
