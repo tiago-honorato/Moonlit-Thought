@@ -885,8 +885,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.487, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1185002625}
+  m_Children: []
   m_Father: {fileID: 439446972}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &330585547
@@ -2567,8 +2566,9 @@ GameObject:
   - component: {fileID: 1185002625}
   - component: {fileID: 1185002627}
   - component: {fileID: 1185002626}
+  - component: {fileID: 1185002628}
   m_Layer: 0
-  m_Name: Spot Light
+  m_Name: Player Flashlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2582,12 +2582,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1185002624}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 3.9700003, y: 1.428, z: 21.322}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 330585546}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!114 &1185002626
 MonoBehaviour:
@@ -2654,7 +2654,7 @@ Light:
       e32: 0
       e33: 1
     m_UseCullingMatrixOverride: 0
-  m_Cookie: {fileID: 0}
+  m_Cookie: {fileID: 2800000, guid: b2f8c8831852add4eba3a41e2014cc52, type: 3}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
   m_RenderMode: 0
@@ -2677,6 +2677,24 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!114 &1185002628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185002624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52d66a9f2eecea84dbc2ed9a4c7bbbb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraTarget: {fileID: 330585546}
+  forwardOffset: 0.2
+  rightOffset: 0.4
+  upOffset: -0.3
+  rotationSpeed: 10
+  positionSpeed: 30
 --- !u!1 &1230268645
 GameObject:
   m_ObjectHideFlags: 0
@@ -4610,6 +4628,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 439446972}
   - {fileID: 273674472}
+  - {fileID: 1185002625}
   - {fileID: 832575519}
   - {fileID: 1011647795}
   - {fileID: 149716093}
