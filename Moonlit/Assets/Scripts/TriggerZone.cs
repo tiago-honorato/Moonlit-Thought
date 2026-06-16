@@ -1,17 +1,17 @@
 using UnityEngine;
-using UnityEngine.Events; // IMPORTANTE: Necessário para usar UnityEvents
+using UnityEngine.Events;
 
 public class TriggerZone : MonoBehaviour
 {
-    // Isso vai criar um campo no seu Inspetor idêntico aos botões do UI do Unity
+    // Cria um campo no inspetor identico aos botoes do UI da Unity
     [SerializeField] private UnityEvent onPlayerEnter;
 
     private void OnTriggerEnter(Collider other)
     {
-        // Verifica se quem entrou foi o jogador (certifique-se de colocar a Tag "Player" no seu boneco)
+        // Verifica se quem entrou foi o jogador (colocar Tag "Player" no player)
         if (other.CompareTag("Player"))
         {
-            // Dispara o evento! Todo mundo que estiver "ouvindo" vai agir.
+            // Dispara o evento e todo mundo que tiver "ouvindo" vai agir
             onPlayerEnter?.Invoke();
         }
     }

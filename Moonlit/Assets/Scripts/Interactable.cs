@@ -6,7 +6,7 @@ public class Interactable : MonoBehaviour
     [Header("Eventos")]
     [SerializeField] private UnityEvent onInteract;
 
-    // Esta função será chamada pelo laser do Player
+    // Function chamada pelo laser do Player
     public void Interact()
     {
         onInteract?.Invoke();

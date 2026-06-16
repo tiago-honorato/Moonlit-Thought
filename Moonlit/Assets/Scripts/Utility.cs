@@ -2,10 +2,12 @@ using UnityEngine;
 
 public class Utility : MonoBehaviour
 {
-    public void SwitchState()
+
+    public void ToggleObj(GameObject G_object)
     {
-
-        gameObject.SetActive(!gameObject.activeSelf);
-
+        if (G_object != null)
+        {
+            G_object.SetActive(!G_object.activeSelf);
+        }
     }
 }

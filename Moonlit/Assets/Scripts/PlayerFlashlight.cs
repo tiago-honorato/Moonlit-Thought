@@ -3,14 +3,14 @@ using UnityEngine;
 public class PlayerFlashlight : MonoBehaviour
 {
     [Header("Componentes")]
-    [SerializeField] private GameObject flashlightLightSource; // Arraste a sua Spot Light aqui
+    [SerializeField] private GameObject flashlightLightSource;
 
-    private bool hasFlashlight = false; // Começa o jogo sem a lanterna
-    private bool isOn = false;          // Começa desligada
+    private bool hasFlashlight = false;
+    private bool isOn = false;
 
     void Start()
     {
-        // Garante que a luz começa apagada no início do jogo
+
         if (flashlightLightSource != null)
         {
             flashlightLightSource.SetActive(false);
@@ -32,7 +32,6 @@ public class PlayerFlashlight : MonoBehaviour
         hasFlashlight = true;
         Debug.Log("Lanterna coletada! Agora você pode apertar F.");
 
-        // Opcional: Liga a lanterna automaticamente ao pegar
         ToggleFlashlight();
     }
 

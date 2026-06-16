@@ -4,8 +4,8 @@ using TMPro;
 public class PlayerInteraction : MonoBehaviour
 {
     [Header("Configurações")]
-    [SerializeField] private float interactDistance = 3.0f; // Distância mínima (em metros)
-    [SerializeField] private LayerMask interactableLayer;   // Camada dos objetos interativos
+    [SerializeField] private float interactDistance = 3.0f;
+    [SerializeField] private LayerMask interactableLayer;
     [SerializeField] private KeyCode interactKey = KeyCode.E;
 
     [SerializeField] private GameObject interactionPrompt;
@@ -24,32 +24,30 @@ public class PlayerInteraction : MonoBehaviour
 
     void Update()
     {
-        // Cria um raio que parte do centro da câmera para a frente
+        // Cria um raio que parte do centro da camera pra frente
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
 
-        // Desenha o raio no modo de edição/Scene para você conseguir enxergar o laser (ajuda no teste!)
+        // Desenha o raio no modo de edicao/Scene pra conseguir ver o laser
         Debug.DrawRay(transform.position, transform.forward * interactDistance, Color.yellow);
 
         bool IsLooking = false;
 
-        // Dispara o "laser" de física
+        // Dispara o "laser" de fisica
         if (Physics.Raycast(ray, out hit, interactDistance, interactableLayer))
         {
 
             IsLooking = true;
 
-            // Se o laser bateu em algo, tentamos pegar o script 'Interactable' dele
+            // Se o laser bateu em algo, pega o script "Interactable" dele
             Interactable interactable = hit.collider.GetComponent<Interactable>();
 
             if (interactable != null)
             {
-                // Mostra na tela ou console que você está olhando para o item
-                // Aqui no futuro você pode fazer um texto "Aperte E para pegar" aparecer na tela
 
-                // Se o jogador apertar a tecla de interação
                 if (Input.GetKeyDown(interactKey))
                 {
+
                     interactable.Interact();
                 }
             }
@@ -57,6 +55,7 @@ public class PlayerInteraction : MonoBehaviour
 
         if (interactionPrompt != null)
         {
+            // Mostra o "aperte E para interagir"
             interactionPrompt.gameObject.SetActive(IsLooking);
         }
     }
